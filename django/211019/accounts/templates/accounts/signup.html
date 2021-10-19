@@ -1,0 +1,7 @@
+<h1>회원가입</h1>
+
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p}}
+  <button>회원가입</button>
+</form>

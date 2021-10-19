@@ -1,0 +1,7 @@
+<h1>Todo 생성하기</h1>
+
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p}}
+  <button>작성하기</button>
+</form>
