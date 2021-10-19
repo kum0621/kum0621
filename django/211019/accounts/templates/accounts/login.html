@@ -1,0 +1,7 @@
+<h1>로그인</h1>
+
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button>로그인하기</button>
+</form>
