@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p>{{ person.username }}님의 프로필 페이지입니다.</p>
+
+<p>팔로우 : {{ person.followers.count }}</p>
+<p>팔로잉 : {{ person.followings.count }}</p>
+
+{% if user != person %}
+    <div>
+      <form action="{% url 'accounts:follow' person.pk %}" method="POST">
+        {% csrf_token %}
+        {% if user in person.followers.all %}
+          <input type="submit" value="언팔로우">
+        {% else %}
+          <input type="submit" value="팔로우">
+        {% endif %}
+
+      </form>
+    </div>
+  
+  {% endif %}
+<hr>
+<p>작성한 글 : {{ person.article_set.count }}</p>
+{{ person.article_set.all }}
+<hr>
+<p>작성한 댓글 : {{ person.comment_set.count }}</p>
+{{ person.comment_set.all }}
+<hr>
+<p>좋아요한 글</p>
+{{ person.like_articles.all }}
+
+{% endblock content %}
